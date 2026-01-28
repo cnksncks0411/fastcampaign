@@ -51,7 +51,7 @@ export default async function ListPage() {
 
     return (
         <div className="animate-fade-in">
-            {/* 필터 영역 */}
+            {/* 필터 영역 }
 <div className="sticky top-14 z-20 border-b border-slate-200/50 bg-white/80 backdrop-blur-xl px-4 py-3 dark:border-slate-700/50 dark:bg-slate-900/80">
     <div className="flex items-center gap-2 overflow-x-auto scrollbar-hide">
         <Button variant="outline" size="sm" className="shrink-0 gap-1.5">
@@ -68,7 +68,7 @@ export default async function ListPage() {
     </div>
 </div>
 
-{/* 에러 메시지 */ }
+{/* 에러 메시지 }
 {
     error && (
         <div className="px-4 py-8 text-center">
@@ -77,14 +77,14 @@ export default async function ListPage() {
     )
 }
 
-{/* 결과 요약 */ }
+{/* 결과 요약 }
 <div className="px-4 py-3">
     <p className="text-sm text-slate-500">
         내 주변 <span className="font-semibold text-violet-600">{campaigns.length}개</span>의 캠페인
     </p>
 </div>
 
-{/* 캠페인 없음 */ }
+{/* 캠페인 없음 }
 {
     campaigns.length === 0 && !error && (
         <div className="px-4 py-16 text-center">
@@ -99,7 +99,7 @@ export default async function ListPage() {
     )
 }
 
-{/* 캠페인 리스트 */ }
+{/* 캠페인 리스트 }
 <div className="px-4 pb-4 space-y-3">
     {campaigns.map((campaign, index) => (
         <CampaignCard
@@ -129,12 +129,12 @@ function CampaignCard({ campaign, index }: { campaign: CampaignListItem; index: 
             >
                 <CardContent className="p-0">
                     <div className="flex">
-                        {/* 썸네일 */}
+                        {/* 썸네일}
                         <div className="relative h-32 w-32 shrink-0 bg-gradient-to-br from-violet-100 to-indigo-100 dark:from-violet-900/30 dark:to-indigo-900/30 flex items-center justify-center">
                             <span className="text-4xl">
                                 {categoryEmojis[category] || '🏪'}
                             </span>
-                            {/* 마감 임박 표시 */}
+                            {/* 마감 임박 표시}
                             {isUrgent && (
                                 <div className="absolute top-2 left-2">
                                     <Badge variant="destructive" className="text-[10px] px-1.5 py-0.5">
@@ -144,7 +144,7 @@ function CampaignCard({ campaign, index }: { campaign: CampaignListItem; index: 
                             )}
                         </div>
 
-                        {/* 정보 */}
+                        {/* 정보}
                         <div className="flex-1 p-4 min-w-0">
                             <div className="flex items-start justify-between gap-2 mb-1">
                                 <Badge variant="secondary" className="text-[10px] shrink-0">
@@ -179,7 +179,7 @@ function CampaignCard({ campaign, index }: { campaign: CampaignListItem; index: 
                                 </span>
                             </div>
 
-                            {/* 정원 진행 바 */}
+                            {/* 정원 진행 바}
                             <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-800">
                                 <div
                                     className="h-full rounded-full bg-gradient-to-r from-violet-500 to-indigo-500 transition-all"
