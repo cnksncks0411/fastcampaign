@@ -52,7 +52,7 @@ function TimeSelect({ value, onChange, options = timeOptions }: { value: string,
         <div className="relative flex-1" ref={containerRef}>
             <div
                 onClick={() => setIsOpen(!isOpen)}
-                className="w-full h-11 pl-9 pr-4 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium flex items-center justify-between cursor-pointer hover:bg-slate-100 transition-colors"
+                className="w-full h-11 pl-9 pr-4 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-medium flex items-center justify-between cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors"
             >
                 <div className="flex items-center gap-2">
                     <Clock className="w-4 h-4 text-slate-400" />
@@ -62,14 +62,14 @@ function TimeSelect({ value, onChange, options = timeOptions }: { value: string,
             </div>
 
             {isOpen && (
-                <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-slate-200 rounded-xl shadow-lg max-h-48 overflow-y-auto z-50">
+                <div className="absolute top-full left-0 right-0 mt-1 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-lg max-h-48 overflow-y-auto z-50">
                     {options.map((t) => (
                         <div
                             key={t}
                             onClick={() => { onChange(t); setIsOpen(false); }}
                             className={cn(
-                                "px-4 py-2.5 text-sm cursor-pointer hover:bg-slate-50 transition-colors",
-                                value === t && "bg-violet-50 text-violet-600 font-bold"
+                                "px-4 py-2.5 text-sm cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors",
+                                value === t && "bg-violet-50 dark:bg-violet-900/20 text-violet-600 dark:text-violet-400 font-bold"
                             )}
                         >
                             {t === '00:00' && options[options.length - 1] === '00:00' ? '00:00 (익일)' : t}
@@ -206,7 +206,7 @@ export function CreateForm({ storeData }: { storeData: StoreWithStatus }) {
                     {selectedStoreIds.length === 0 ? (
                         <div
                             onClick={() => setIsStoreModalOpen(true)}
-                            className="bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl h-11 flex items-center justify-between px-4 cursor-pointer hover:bg-slate-100 transition-colors text-slate-500 text-sm font-medium"
+                            className="bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl h-11 flex items-center justify-between px-4 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors text-slate-500 text-sm font-medium"
                         >
                             <span>매장을 선택해주세요</span>
                             <ChevronDown className="w-4 h-4 opacity-50" />
@@ -354,7 +354,7 @@ export function CreateForm({ storeData }: { storeData: StoreWithStatus }) {
                                     onChange={e => setBenefitInput(e.target.value)}
                                     onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); addBenefit(); } }}
                                     placeholder="예: 5만원 식사권"
-                                    className="w-full bg-slate-50 border-slate-200 h-11 rounded-xl focus-visible:ring-violet-500 text-sm"
+                                    className="w-full bg-slate-50 dark:bg-slate-950 border-slate-200 dark:border-slate-800 h-11 rounded-xl focus-visible:ring-violet-500 text-sm dark:text-white"
                                 />
                             </div>
                             <Button type="button" onClick={addBenefit} className="bg-slate-800 hover:bg-slate-900 text-white shrink-0 w-16 h-11 rounded-xl font-bold text-sm">
@@ -390,7 +390,7 @@ export function CreateForm({ storeData }: { storeData: StoreWithStatus }) {
                                     onChange={e => setTagInput(e.target.value)}
                                     onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); addTag(); } }}
                                     placeholder="예: 강남맛집"
-                                    className="w-full bg-slate-50 border-slate-200 h-11 rounded-xl focus-visible:ring-violet-500 text-sm"
+                                    className="w-full bg-slate-50 dark:bg-slate-950 border-slate-200 dark:border-slate-800 h-11 rounded-xl focus-visible:ring-violet-500 text-sm dark:text-white"
                                     disabled={tags.length >= 5}
                                 />
                             </div>
@@ -428,7 +428,7 @@ export function CreateForm({ storeData }: { storeData: StoreWithStatus }) {
                                 onClick={() => setEndDateType('DATE')}
                                 className={cn(
                                     "p-3 rounded-xl border cursor-pointer text-sm font-bold text-center transition-colors",
-                                    endDateType === 'DATE' ? "bg-slate-900 text-white border-slate-900" : "bg-slate-50 border-slate-200 text-slate-500"
+                                    endDateType === 'DATE' ? "bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 border-slate-900 dark:border-slate-100" : "bg-slate-50 dark:bg-slate-950 border-slate-200 dark:border-slate-800 text-slate-500"
                                 )}
                             >
                                 날짜 지정
@@ -437,7 +437,7 @@ export function CreateForm({ storeData }: { storeData: StoreWithStatus }) {
                                 onClick={() => setEndDateType('AUTO')}
                                 className={cn(
                                     "p-3 rounded-xl border cursor-pointer text-sm font-bold text-center transition-colors",
-                                    endDateType === 'AUTO' ? "bg-slate-900 text-white border-slate-900" : "bg-slate-50 border-slate-200 text-slate-500"
+                                    endDateType === 'AUTO' ? "bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 border-slate-900 dark:border-slate-100" : "bg-slate-50 dark:bg-slate-950 border-slate-200 dark:border-slate-800 text-slate-500"
                                 )}
                             >
                                 인원 마감시 종료
@@ -446,9 +446,9 @@ export function CreateForm({ storeData }: { storeData: StoreWithStatus }) {
 
                         {endDateType === 'DATE' && (
                             <div className="relative w-full h-12" onClick={handleDateClick}>
-                                <div className="absolute inset-0 bg-slate-50 border border-slate-200 rounded-xl flex items-center px-4 cursor-pointer hover:bg-slate-100 transition-colors z-10 pointer-events-none">
+                                <div className="absolute inset-0 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl flex items-center px-4 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors z-10 pointer-events-none">
                                     <Calendar className="w-4 h-4 text-slate-400 mr-2" />
-                                    <span className={cn("text-sm font-medium", endDate ? "text-slate-900" : "text-slate-400")}>
+                                    <span className={cn("text-sm font-medium", endDate ? "text-slate-900 dark:text-slate-200" : "text-slate-400")}>
                                         {endDate || "연도-월-일 선택"}
                                     </span>
                                     <span className="ml-auto text-sm text-slate-500 font-bold bg-slate-200 px-2 py-0.5 rounded text-[10px]">
@@ -483,23 +483,23 @@ export function CreateForm({ storeData }: { storeData: StoreWithStatus }) {
                     {/* Capacity */}
                     <div className="space-y-2">
                         <Label className="text-sm font-bold text-slate-700">모집 인원 (매장별)</Label>
-                        <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 flex flex-col gap-4">
+                        <div className="bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl p-4 flex flex-col gap-4">
                             <div className="flex items-center justify-between">
                                 <div>
-                                    <span className="text-xl font-bold text-slate-900">{capacity}</span>
+                                    <span className="text-xl font-bold text-slate-900 dark:text-white">{capacity}</span>
                                     <span className="text-sm text-slate-500 ml-1">명</span>
                                 </div>
                                 <div className="flex items-center gap-2">
-                                    <Button type="button" variant="outline" size="icon" onClick={() => capacity > 1 && setCapacity(c => c - 1)} className="h-9 w-9 rounded-lg border-slate-300 bg-white hover:bg-slate-50">
+                                    <Button type="button" variant="outline" size="icon" onClick={() => capacity > 1 && setCapacity(c => c - 1)} className="h-9 w-9 rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 dark:text-slate-200">
                                         <Minus className="w-4 h-4" />
                                     </Button>
-                                    <Button type="button" variant="outline" size="icon" onClick={() => capacity < 50 && setCapacity(c => c + 1)} className="h-9 w-9 rounded-lg border-slate-300 bg-white hover:bg-slate-50">
+                                    <Button type="button" variant="outline" size="icon" onClick={() => capacity < 50 && setCapacity(c => c + 1)} className="h-9 w-9 rounded-lg border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 hover:bg-slate-50 dark:hover:bg-slate-800 dark:text-slate-200">
                                         <Plus className="w-4 h-4" />
                                     </Button>
                                 </div>
                             </div>
 
-                            <div className="bg-white border border-violet-100 rounded-lg p-3 flex justify-between items-center shadow-sm">
+                            <div className="bg-white dark:bg-slate-900 border border-violet-100 dark:border-slate-800 rounded-lg p-3 flex justify-between items-center shadow-sm">
                                 <div className="text-xs text-slate-500 font-medium">총 포인트 비용</div>
                                 <div className="text-base font-bold text-violet-600">
                                     {totalCost.toLocaleString()} P
@@ -512,10 +512,10 @@ export function CreateForm({ storeData }: { storeData: StoreWithStatus }) {
             </div>
 
             {/* Fixed Footer */}
-            <div className="fixed bottom-0 left-0 right-0 p-4 bg-white border-t border-slate-100 z-[90] shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
+            <div className="fixed bottom-0 left-0 right-0 p-4 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 z-[90] shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
                 <div className="max-w-xl mx-auto flex items-center justify-between gap-4">
                     <div className="flex flex-col">
-                        <span className="text-xs text-slate-500 font-medium">내 포인트: <span className="text-slate-900 font-bold">{storeData.pointsBalance.toLocaleString()} P</span></span>
+                        <span className="text-xs text-slate-500 font-medium">내 포인트: <span className="text-slate-900 dark:text-white font-bold">{storeData.pointsBalance.toLocaleString()} P</span></span>
                         <span className="text-xs text-slate-400">필요 포인트: {totalCost.toLocaleString()} P</span>
                     </div>
                     <Button
